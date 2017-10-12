@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="Exp02:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Exp02_jar</output-path>
+    <root id="root">
+      <element id="archive" name="Exp02.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="Exp02" />
+      </element>
+    </root>
+  </artifact>
+</component>
