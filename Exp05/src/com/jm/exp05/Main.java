@@ -7,5 +7,8 @@ public class Main {
         binaryTree1.preorderDisplay();
         System.out.println("Depth: " + binaryTree1.getDepth());
         binaryTree1.reset();
+        SequentialBinaryTree sequentialBinaryTree = new SequentialBinaryTree(10, 10);
+        sequentialBinaryTree.init();
+        sequentialBinaryTree.display();
     }
 }
