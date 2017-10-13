@@ -19,8 +19,8 @@ public class BinaryTree {
     }
 
     public int getDepth() {
-        recursiveGetDepthOfLeftOffspring(root);
-        recursiveGetDepthOfRightOffspring(root);
+        getDepthOfLeftOffspring(root);
+        getDepthOfRightOffspring(root);
         if (depthOfLeftOffspring >= depthOfRightOffspring) {
             return depthOfLeftOffspring;
         } else {
@@ -28,17 +28,17 @@ public class BinaryTree {
         }
     }
 
-    private void recursiveGetDepthOfLeftOffspring(BinaryTreeNode node) {
+    private void getDepthOfLeftOffspring(BinaryTreeNode node) {
         if (node != null) {
             depthOfLeftOffspring++;
-            recursiveGetDepthOfLeftOffspring(node.getLeftChild());
+            getDepthOfLeftOffspring(node.getLeftChild());
         }
     }
 
-    private void recursiveGetDepthOfRightOffspring(BinaryTreeNode node) {
+    private void getDepthOfRightOffspring(BinaryTreeNode node) {
         if (node != null) {
             depthOfRightOffspring++;
-            recursiveGetDepthOfRightOffspring(node.getRightChild());
+            getDepthOfRightOffspring(node.getRightChild());
         }
     }
 
