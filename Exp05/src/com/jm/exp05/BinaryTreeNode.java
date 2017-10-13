@@ -2,8 +2,8 @@ package com.jm.exp05;
 
 public class BinaryTreeNode {
     private Object data;
-    BinaryTreeNode leftChild;
-    BinaryTreeNode rightChild;
+    private BinaryTreeNode leftChild;
+    private BinaryTreeNode rightChild;
 
     public BinaryTreeNode() {
     }
