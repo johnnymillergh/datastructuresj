@@ -3,6 +3,7 @@ package com.jm.exp05;
 public class BinaryTree {
     BinaryTreeNode root;
 
+
     private static int index = 0;
 
     public BinaryTree(String preOrderSequence) {
@@ -41,5 +42,9 @@ public class BinaryTree {
 
     public void setRoot(BinaryTreeNode root) {
         this.root = root;
+    }
+
+    public static void setIndex(int index) {
+        BinaryTree.index = index;
     }
 }
