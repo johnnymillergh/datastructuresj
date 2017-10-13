@@ -6,7 +6,7 @@ public class Main {
         SequentialStack sequentialStack = new SequentialStack(100);
         Character dataInput;
         while (true) {
-            System.out.print("Data: ");
+            System.out.print("Push: ");
             dataInput = KeyInput.readChar();
             if (dataInput.charValue() != '#') {
                 try {
