@@ -40,12 +40,12 @@ public class SequentialStack implements IStack {
     }
 
     @Override
-    public Object pop() {
+    public Object pop() throws Exception {
         if (!isEmpty()) {
             top--;
             return stackElement[top];
         } else {
-            return null;
+            throw new Exception("Warning(pop): Stack is empty.");
         }
     }
 

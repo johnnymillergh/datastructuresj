@@ -14,6 +14,14 @@ public class Main {
                 break;
             }
         }
-        sequentialStack.display();
+        while (true) {
+            dataInput = KeyInput.readChar();
+            if (dataInput.charValue() == '1') {
+                System.out.println("Pop: " + sequentialStack.pop());
+                sequentialStack.display();
+            } else {
+                break;
+            }
+        }
     }
 }

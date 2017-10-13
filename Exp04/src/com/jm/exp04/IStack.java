@@ -11,7 +11,7 @@ public interface IStack {
 
     public void push(Object x) throws Exception;
 
-    public Object pop();
+    public Object pop() throws Exception;
 
     public void display();
 }
