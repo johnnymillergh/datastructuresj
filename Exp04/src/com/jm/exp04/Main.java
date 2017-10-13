@@ -2,14 +2,18 @@ package com.jm.exp04;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SequentialStack sequentialStack = new SequentialStack(100);
         Character dataInput;
         while (true) {
             System.out.print("Data: ");
             dataInput = KeyInput.readChar();
             if (dataInput.charValue() != '#') {
-                sequentialStack.push(dataInput);
+                try {
+                    sequentialStack.push(dataInput);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             } else {
                 break;
             }
@@ -17,7 +21,11 @@ public class Main {
         while (true) {
             dataInput = KeyInput.readChar();
             if (dataInput.charValue() == '1') {
-                System.out.println("Pop: " + sequentialStack.pop());
+                try {
+                    System.out.println("Pop: " + sequentialStack.pop());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 sequentialStack.display();
             } else {
                 break;
