@@ -2,7 +2,7 @@ package com.jm.exp05;
 
 public class BinaryTree {
     BinaryTreeNode root;
-    private static int index = 0;
+    private static int index;
     private static int depthOfLeftOffspring;
     private static int depthOfRightOffspring;
 
@@ -16,19 +16,6 @@ public class BinaryTree {
         } else {
             root = null;
         }
-    }
-
-    public void destroy() {
-        root = null;
-    }
-
-    public void clear() {
-        root.setLeftChild(null);
-        root.setRightChild(null);
-    }
-
-    public boolean isEmpty() {
-        return root.getLeftChild() == null || root.getRightChild() == null;
     }
 
     public int getDepth() {
@@ -68,6 +55,20 @@ public class BinaryTree {
             System.out.print("# ");
         }
     }
+
+    public void destroy() {
+        root = null;
+    }
+
+    public void clear() {
+        root.setLeftChild(null);
+        root.setRightChild(null);
+    }
+
+    public boolean isEmpty() {
+        return root.getLeftChild() == null || root.getRightChild() == null;
+    }
+
 
     public void reset() {
         setIndex(0);
