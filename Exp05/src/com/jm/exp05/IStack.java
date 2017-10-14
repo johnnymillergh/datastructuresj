@@ -1,17 +1,17 @@
 package com.jm.exp05;
 
-public interface IStack {
+public interface IStack<ElementType> {
     public void clear();
 
     public boolean isEmpty();
 
     public int length();
 
-    public Object peek();
+    public ElementType peek();
 
-    public void push(Object x) throws Exception;
+    public void push(ElementType x) throws Exception;
 
-    public Object pop() throws Exception;
+    public ElementType pop() throws Exception;
 
     public void display();
 }
