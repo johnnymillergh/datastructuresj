@@ -53,7 +53,7 @@ public class BinaryTree {
             recursivePreorderDisplay(node.getLeftChild());
             recursivePreorderDisplay(node.getRightChild());
         } else {
-//            System.out.print("# ");
+            System.out.print("# ");
         }
     }
 

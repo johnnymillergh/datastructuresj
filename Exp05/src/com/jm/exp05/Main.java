@@ -6,6 +6,7 @@ public class Main {
         // Exp05-01
         System.out.println("<Exp05-01>");
         BinaryTree binaryTree1 = new BinaryTree("ABD###CE##F##");
+        System.out.print("Pre-order (Recursive call): ");
         binaryTree1.preorderDisplay();
         System.out.println("Depth: " + binaryTree1.getDepth());
         binaryTree1.reset();
@@ -14,6 +15,7 @@ public class Main {
         System.out.println("<Exp05-02>");
         SequentialBinaryTree sequentialBinaryTree = new SequentialBinaryTree("ABCDEFGH", 10, 10);
         sequentialBinaryTree.display();
+        System.out.print("Pre-order (Non-recursive call): ");
         sequentialBinaryTree.iterativePreorderTraverse();
     }
 }
