@@ -43,18 +43,22 @@ public class BinaryTree {
     }
 
     public void preorderDisplay() {
-        recursivePreorderDisplay(root);
+        recursivePreorderTraverse(root);
         System.out.println("<END>");
     }
 
-    private void recursivePreorderDisplay(BinaryChainedNode node) {
+    private void recursivePreorderTraverse(BinaryChainedNode node) {
         if (node != null) {
-            System.out.print(node.getData() + " ");
-            recursivePreorderDisplay(node.getLeftChild());
-            recursivePreorderDisplay(node.getRightChild());
+            visit(node);
+            recursivePreorderTraverse(node.getLeftChild());
+            recursivePreorderTraverse(node.getRightChild());
         } else {
             System.out.print("# ");
         }
+    }
+
+    private void visit(BinaryChainedNode node) {
+        System.out.print(node.getData() + " ");
     }
 
     public void destroy() {
