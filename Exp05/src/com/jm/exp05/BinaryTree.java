@@ -1,7 +1,7 @@
 package com.jm.exp05;
 
 public class BinaryTree {
-    TreeNode root;
+    BinaryChainedNode root;
     private static int index;
     private static int depthOfLeftOffspring;
     private static int depthOfRightOffspring;
@@ -10,7 +10,7 @@ public class BinaryTree {
         char nodeCharacter = preOrderSequence.charAt(index);
         index++;
         if (nodeCharacter != '#') {
-            root = new TreeNode(Character.valueOf(nodeCharacter));
+            root = new BinaryChainedNode(Character.valueOf(nodeCharacter));
             root.setLeftChild(new BinaryTree(preOrderSequence).getRoot());
             root.setRightChild(new BinaryTree(preOrderSequence).getRoot());
         } else {
@@ -28,14 +28,14 @@ public class BinaryTree {
         }
     }
 
-    private void getDepthOfLeftOffspring(TreeNode node) {
+    private void getDepthOfLeftOffspring(BinaryChainedNode node) {
         if (node != null) {
             depthOfLeftOffspring++;
             getDepthOfLeftOffspring(node.getLeftChild());
         }
     }
 
-    private void getDepthOfRightOffspring(TreeNode node) {
+    private void getDepthOfRightOffspring(BinaryChainedNode node) {
         if (node != null) {
             depthOfRightOffspring++;
             getDepthOfRightOffspring(node.getRightChild());
@@ -47,7 +47,7 @@ public class BinaryTree {
         System.out.println("<END>");
     }
 
-    private void recursivePreorderDisplay(TreeNode node) {
+    private void recursivePreorderDisplay(BinaryChainedNode node) {
         if (node != null) {
             System.out.print(node.getData() + " ");
             recursivePreorderDisplay(node.getLeftChild());
@@ -77,11 +77,11 @@ public class BinaryTree {
         setDepthOfRightOffspring(0);
     }
 
-    public TreeNode getRoot() {
+    public BinaryChainedNode getRoot() {
         return root;
     }
 
-    public void setRoot(TreeNode root) {
+    public void setRoot(BinaryChainedNode root) {
         this.root = root;
     }
 
