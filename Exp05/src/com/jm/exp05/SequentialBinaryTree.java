@@ -55,16 +55,16 @@ public class SequentialBinaryTree {
             int currentIndexOfLeftChild = getIndexOfLeftChildOf(currentRootNode);
             TreeNode currentRightChild;
             TreeNode currentLeftChild;
-            if (currentIndexOfLeftChild > 0) {
-                currentLeftChild = treeNodes.get(currentIndexOfLeftChild);
-                if (currentLeftChild != null) {
-                    stack.push(currentLeftChild);
-                }
-            }
             if (currentIndexOfRightChild > 0) {
                 currentRightChild = treeNodes.get(currentIndexOfRightChild);
                 if (currentRightChild != null) {
                     stack.push(currentRightChild);
+                }
+            }
+            if (currentIndexOfLeftChild > 0) {
+                currentLeftChild = treeNodes.get(currentIndexOfLeftChild);
+                if (currentLeftChild != null) {
+                    stack.push(currentLeftChild);
                 }
             }
         }
