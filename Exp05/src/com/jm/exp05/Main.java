@@ -14,6 +14,7 @@ public class Main {
         // Exp05-02
         System.out.println("<Exp05-02>");
         SequentialBinaryTree sequentialBinaryTree = new SequentialBinaryTree("ABCDEFGH", 10, 10);
+        System.out.print("Level traversal: ");
         sequentialBinaryTree.display();
         System.out.print("Pre-order (Non-recursive call): ");
         sequentialBinaryTree.iterativePreorderTraverse();
