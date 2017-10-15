@@ -71,7 +71,7 @@ public class BinaryTree {
     }
 
     public boolean isEmpty() {
-        return root.getLeftChild() == null || root.getRightChild() == null;
+        return root.getLeftChild() == null && root.getRightChild() == null;
     }
 
 
