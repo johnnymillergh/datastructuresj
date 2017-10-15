@@ -1,11 +1,11 @@
 package com.jm.exp05;
 
-public class SequentialStack implements IStack<Character> {
-    private Character[] stackElement;
+public class SequentialStack implements IStack<Object> {
+    private Object[] stackElement;
     private int top;
 
     public SequentialStack(int maxSize) {
-        stackElement = new Character[maxSize];
+        stackElement = new Object[maxSize];
         top = 0;
     }
 
@@ -25,12 +25,12 @@ public class SequentialStack implements IStack<Character> {
     }
 
     @Override
-    public Character peek() {
+    public Object peek() {
         return stackElement[top - 1];
     }
 
     @Override
-    public void push(Character element) throws Exception {
+    public void push(Object element) throws Exception {
         if (length() != stackElement.length) {
             stackElement[top] = element;
             top++;
@@ -40,7 +40,7 @@ public class SequentialStack implements IStack<Character> {
     }
 
     @Override
-    public Character pop() throws Exception {
+    public Object pop() throws Exception {
         if (!isEmpty()) {
             top--;
             return stackElement[top];
