@@ -44,6 +44,7 @@ public class BinaryTree {
 
     public void preorderDisplay() {
         recursivePreorderDisplay(root);
+        System.out.println("<END>");
     }
 
     private void recursivePreorderDisplay(TreeNode node) {
@@ -52,7 +53,7 @@ public class BinaryTree {
             recursivePreorderDisplay(node.getLeftChild());
             recursivePreorderDisplay(node.getRightChild());
         } else {
-            System.out.print("# ");
+//            System.out.print("# ");
         }
     }
 

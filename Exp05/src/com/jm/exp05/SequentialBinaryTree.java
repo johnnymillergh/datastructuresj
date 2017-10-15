@@ -68,6 +68,7 @@ public class SequentialBinaryTree {
                 }
             }
         }
+        System.out.println("<END>");
     }
 
     private void visit(TreeNode node) {
