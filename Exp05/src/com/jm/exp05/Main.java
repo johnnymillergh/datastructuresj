@@ -4,14 +4,14 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         // Exp05-01
-//        System.out.println("<Exp05-01>");
-//        System.out.print("Pre-order: ");
-//        String preorderSequence = KeyInput.readString(); // ABD###CE##F##
-//        BinaryTree binaryTree1 = new BinaryTree(preorderSequence);
-//        System.out.print("Pre-order traversal (Recursive call): ");
-//        binaryTree1.preorderDisplay();
-//        System.out.println("Depth: " + binaryTree1.getDepth());
-//        binaryTree1.reset();
+        System.out.println("<Exp05-01>");
+        System.out.print("Pre-order: ");
+        String preorderSequence = KeyInput.readString(); // ABD###CE##F##
+        BinaryTree binaryTree1 = new BinaryTree(preorderSequence);
+        System.out.print("Pre-order traversal (Recursive call): ");
+        binaryTree1.preorderDisplay();
+        System.out.println("Depth: " + binaryTree1.getDepth());
+        binaryTree1.reset();
 
         // Exp05-02
         System.out.println("<Exp05-02>");

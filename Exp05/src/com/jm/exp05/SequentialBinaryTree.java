@@ -44,7 +44,6 @@ public class SequentialBinaryTree {
         }
         SequentialStack stack = new SequentialStack(100);
         stack.push(this.getRootNode());
-        int indexRoot = 0;
         while (!stack.isEmpty()) {
             TreeNode currentRootNode = (TreeNode) stack.pop();
             visit(currentRootNode);
