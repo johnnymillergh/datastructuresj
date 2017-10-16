@@ -61,6 +61,18 @@ public class BinaryTree {
         System.out.print(node.getData() + " ");
     }
 
+    public void iterativePreorder() {
+
+    }
+
+    public void iterativeInorder() {
+
+    }
+
+    public void iterativePostorder() {
+
+    }
+
     public void destroy() {
         root = null;
     }
