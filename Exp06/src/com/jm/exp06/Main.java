@@ -13,5 +13,12 @@ public class Main {
         long endTime = System.nanoTime();
         System.out.println("Time： " + (endTime - startTime) + " ns");
         System.out.println(helper.getFrequencyList().toString());
+        SequentialHuffmanTree huffmanTree = new SequentialHuffmanTree(helper.getFrequencyList().size());
+        huffmanTree.init(helper.getFrequencyList());
+        huffmanTree.display();
+        System.out.println("11111");
+        System.out.println("\\r");
+        System.out.println("00000");
+        System.out.println("\\n");
     }
 }

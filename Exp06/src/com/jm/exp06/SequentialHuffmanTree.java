@@ -1,25 +1,44 @@
 package com.jm.exp06;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 public class SequentialHuffmanTree {
     private Vector<Node> nodes;
 
-    public SequentialHuffmanTree(int size) {
+    public SequentialHuffmanTree(int sizeOfFrequencyList) {
         nodes = new Vector<>();
-        nodes.setSize(2 * size);
+        nodes.setSize(2 * sizeOfFrequencyList);
+        System.out.println(nodes.size());
     }
 
     public SequentialHuffmanTree(int initialCapacity, int capacityIncrement) {
         nodes = new Vector<>(initialCapacity, capacityIncrement);
     }
 
+    public void init(HashMap<Character, Integer> frequencyList) {
+        int index = 1;
+        nodes.add(0, new Node(0, 0, 0, 0));
+        for (Map.Entry<Character, Integer> row : frequencyList.entrySet()) {
+            nodes.add(index, new Node(row.getKey(), row.getValue()));
+            index++;
+        }
+        for (index = 1; index < nodes.size(); index++) {
+            nodes.get(index);
+        }
+    }
 
     public void display() {
-        for (int i = 0; i < nodes.size(); i++) {
-            System.out.println("Data:" + nodes.get(i).data + ", Weight:" + nodes.get(i).weight + ", Parent:" + nodes
-                    .get(i).parentIndex + ", Left:" + nodes.get(i).leftChildIndex + ", Right:" + nodes.get(i)
-                    .rightChildIndex);
+        try {
+            for (int i = 0; i < nodes.size(); i++) {
+                System.out.println("Row " + i + ": Data:" + nodes.get(i).data + ", Weight:" + nodes.get(i).weight + ", "
+                        + "Parent:" + nodes.get(i).parentIndex + ", Left:" + nodes.get(i).leftChildIndex + ", Right:" +
+                        nodes.get(i).rightChildIndex);
+            }
+        } catch (Exception e) {
+            System.out.println("Out of index.");
+            e.printStackTrace();
         }
         System.out.println("<END>");
     }
@@ -107,6 +126,18 @@ public class SequentialHuffmanTree {
 
         public Node(Object data) {
             this.data = data;
+        }
+
+        public Node(Object data, int weight) {
+            this.data = data;
+            this.weight = weight;
+        }
+
+        public Node(int weight, int parentIndex, int leftChildIndex, int rightChildIndex) {
+            this.weight = weight;
+            this.parentIndex = parentIndex;
+            this.leftChildIndex = leftChildIndex;
+            this.rightChildIndex = rightChildIndex;
         }
     }
 }
