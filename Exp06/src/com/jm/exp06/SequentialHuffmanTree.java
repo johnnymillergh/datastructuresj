@@ -19,26 +19,40 @@ public class SequentialHuffmanTree {
 
     public void init(HashMap<Character, Integer> frequencyList) {
         int index = 1;
-        nodes.add(0, new Node(0, 0, 0, 0));
+        nodes.add(0, new Node());
         for (Map.Entry<Character, Integer> row : frequencyList.entrySet()) {
             nodes.add(index, new Node(row.getKey(), row.getValue()));
             index++;
         }
-        for (index = 1; index < nodes.size(); index++) {
-            nodes.get(index);
+        for (int i = nodes.size() / 2; i < nodes.size(); i++) {
+            Node firstMinNode = select(), secondMinNode = select();
+
         }
+
+    }
+
+    private Node select() {
+        Node min = nodes.get(1);
+        for (int i = 1; i < nodes.size(); i++) {
+            if (nodes.get(i) == null) {
+                break;
+            }
+            if (nodes.get(i).weight < min.weight && nodes.get(i).isSelected != true) {
+                min = nodes.get(i);
+            }
+        }
+        min.isSelected = true;
+        return min;
     }
 
     public void display() {
-        try {
-            for (int i = 0; i < nodes.size(); i++) {
-                System.out.println("Row " + i + ": Data:" + nodes.get(i).data + ", Weight:" + nodes.get(i).weight + ", "
-                        + "Parent:" + nodes.get(i).parentIndex + ", Left:" + nodes.get(i).leftChildIndex + ", Right:" +
-                        nodes.get(i).rightChildIndex);
+        for (int i = 0; i < nodes.size(); i++) {
+            if (nodes.get(i) == null) {
+                break;
             }
-        } catch (Exception e) {
-            System.out.println("Out of index.");
-            e.printStackTrace();
+            System.out.println("Row " + i + ": Data:" + nodes.get(i).data + ", Weight:" + nodes.get(i).weight + ", "
+                    + "Parent:" + nodes.get(i).parentIndex + ", Left:" + nodes.get(i).leftChildIndex + ", Right:" +
+                    nodes.get(i).rightChildIndex);
         }
         System.out.println("<END>");
     }
@@ -123,6 +137,11 @@ public class SequentialHuffmanTree {
         int parentIndex;
         int leftChildIndex;
         int rightChildIndex;
+        boolean isSelected;
+
+        public Node() {
+
+        }
 
         public Node(Object data) {
             this.data = data;
