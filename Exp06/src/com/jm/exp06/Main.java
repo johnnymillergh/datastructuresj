@@ -12,6 +12,6 @@ public class Main {
         helper.count();
         long endTime = System.nanoTime();
         System.out.println("Time： " + (endTime - startTime) + " ns");
-        System.out.println(helper.frequencyList.toString());
+        System.out.println(helper.getFrequencyList().toString());
     }
 }

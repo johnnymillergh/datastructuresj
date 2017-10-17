@@ -5,9 +5,9 @@ import java.io.FileInputStream;
 import java.util.HashMap;
 
 public class HuffmanTreeHelper {
-    String filePath;
-    String content;
-    HashMap<Character, Integer> frequencyList;
+    private String filePath;
+    private String content;
+    private HashMap<Character, Integer> frequencyList;
 
     public HuffmanTreeHelper(String filePath) {
         if (filePath != null) {
@@ -44,5 +44,9 @@ public class HuffmanTreeHelper {
                 frequencyList.put(tempCharacter, frequency);
             }
         }
+    }
+
+    public HashMap<Character, Integer> getFrequencyList() {
+        return frequencyList;
     }
 }

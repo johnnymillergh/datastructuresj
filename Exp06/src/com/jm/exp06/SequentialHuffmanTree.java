@@ -14,29 +14,12 @@ public class SequentialHuffmanTree {
         nodes = new Vector<>(initialCapacity, capacityIncrement);
     }
 
-    public SequentialHuffmanTree(String treeString, int initialCapacity, int capacityIncrement) {
-        nodes = new Vector<>(initialCapacity, capacityIncrement);
-        for (int i = 0; i < treeString.length(); i++) {
-            Character character = treeString.charAt(i);
-            nodes.addElement(new Node(character));
-        }
-    }
-
-    public void init() {
-        Character dataInput;
-        while (true) {
-            dataInput = KeyInput.readChar();
-            if (dataInput.charValue() != '#') {
-                nodes.addElement(new Node(dataInput));
-            } else {
-                break;
-            }
-        }
-    }
 
     public void display() {
         for (int i = 0; i < nodes.size(); i++) {
-            System.out.print(nodes.get(i).getData() + " ");
+            System.out.println("Data:" + nodes.get(i).data + ", Weight:" + nodes.get(i).weight + ", Parent:" + nodes
+                    .get(i).parentIndex + ", Left:" + nodes.get(i).leftChildIndex + ", Right:" + nodes.get(i)
+                    .rightChildIndex);
         }
         System.out.println("<END>");
     }
@@ -72,7 +55,7 @@ public class SequentialHuffmanTree {
     }
 
     private void visit(Node node) {
-        System.out.print(node.getData() + " ");
+        System.out.print(node.data + " ");
     }
 
     private int getIndexOfLeftChildOf(Node currentRootNode) {
@@ -116,17 +99,13 @@ public class SequentialHuffmanTree {
     }
 
     private class Node {
-        private Object data;
+        Object data;
+        int weight;
+        int parentIndex;
+        int leftChildIndex;
+        int rightChildIndex;
 
         public Node(Object data) {
-            this.data = data;
-        }
-
-        public Object getData() {
-            return data;
-        }
-
-        public void setData(Object data) {
             this.data = data;
         }
     }
