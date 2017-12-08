@@ -1,11 +1,11 @@
 package com.jm.exp08;
 
 public interface IGraph {
-    void createGraph();
+    void create();
 
-    int getVertexNumber();
+    int getVertexAmount();
 
-    int getArcNumber();
+    int getArcAmount();
 
     Object getVertex() throws Exception;
 

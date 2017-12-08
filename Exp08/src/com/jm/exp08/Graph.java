@@ -23,7 +23,7 @@ public class Graph implements IGraph {
     }
 
     @Override
-    public void createGraph() {
+    public void create() {
         System.out.print("Enter the category of the graph: \n" +
                 "    (UndirectedGraph,\n" +
                 "    DirectedGraph,\n" +
@@ -53,10 +53,11 @@ public class Graph implements IGraph {
         vertexes = new Object[vertexAmount];
         System.out.println("Enter the identification of the vertex of the graph: ");
         for (int i = 0; i < vertexAmount; i++) {
-            System.out.print("Vertex No. " + i + 1 + ": ");
+            System.out.print("Vertex No. " + (i + 1) + ": ");
             vertexes[i] = KeyInput.readString();
         }
         // Initial the adjacent matrix
+        arcs = new int[vertexAmount][vertexAmount];
         for (int i = 0; i < vertexAmount; i++) {
             for (int j = 0; j < vertexAmount; j++) {
                 arcs[i][j] = INFINITY;
@@ -75,12 +76,12 @@ public class Graph implements IGraph {
     }
 
     @Override
-    public int getVertexNumber() {
+    public int getVertexAmount() {
         return 0;
     }
 
     @Override
-    public int getArcNumber() {
+    public int getArcAmount() {
         return 0;
     }
 
