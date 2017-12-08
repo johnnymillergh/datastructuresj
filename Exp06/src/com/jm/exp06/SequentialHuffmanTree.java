@@ -7,54 +7,77 @@ import java.util.Vector;
 public class SequentialHuffmanTree {
     private Vector<Node> nodes;
 
-    public SequentialHuffmanTree(int sizeOfFrequencyList) {
+    public SequentialHuffmanTree(HashMap<Character, Integer> frequencyList) {
         nodes = new Vector<>();
-        nodes.setSize(2 * sizeOfFrequencyList);
-        System.out.println(nodes.size());
+        nodes.setSize(2 * frequencyList.size());
+        int index = 1;
+        for (Map.Entry<Character, Integer> row : frequencyList.entrySet()) {
+            nodes.add(index, new Node(row.getKey(), row.getValue()));
+            index++;
+//            System.out.println("Adding: " + row.getKey() + ", " + row.getValue());
+        }
     }
 
     public SequentialHuffmanTree(int initialCapacity, int capacityIncrement) {
         nodes = new Vector<>(initialCapacity, capacityIncrement);
     }
 
-    public void init(HashMap<Character, Integer> frequencyList) {
+    public void generate() {
         int index = 1;
-        nodes.add(0, new Node());
-        for (Map.Entry<Character, Integer> row : frequencyList.entrySet()) {
-            nodes.add(index, new Node(row.getKey(), row.getValue()));
-            index++;
-        }
-        for (int i = nodes.size() / 2; i < nodes.size(); i++) {
-            Node firstMinNode = select(), secondMinNode = select();
+        int firstMinimumIndex = 0, secondMinimumIndex = 0;
+        Node firstMinimumNode, secondMinimumNode;
+        for (; ; index++) {
+            // Select the 1st node
+            firstMinimumIndex = selectMinimumIndex();
+            firstMinimumNode = nodes.get(firstMinimumIndex);
+            firstMinimumNode.isSelected = true;
+//            nodes.setElementAt(firstMinimumNode, firstMinimumIndex);
 
-        }
+            // Select the 1st node
+            secondMinimumIndex = selectMinimumIndex();
+            secondMinimumNode = nodes.get(secondMinimumIndex);
+            secondMinimumNode.isSelected = true;
+//            nodes.setElementAt(secondMinimumNode, secondMinimumIndex);
 
+            // New a parent node
+            nodes.add(new Node(firstMinimumNode.weight + secondMinimumNode.weight, 0, firstMinimumIndex,
+                    secondMinimumIndex));
+            firstMinimumNode.parentIndex = index;
+            secondMinimumNode.parentIndex = index;
+        }
     }
 
-    private Node select() {
-        Node min = nodes.get(1);
+    public int selectMinimumIndex() {
+        Node minimumNode = new Node(0, Integer.MAX_VALUE);
+        int index = 0;
         for (int i = 1; i < nodes.size(); i++) {
-            if (nodes.get(i) == null) {
+            Node tempRow = nodes.get(i);
+            if (tempRow != null) {
+                if (tempRow.weight < minimumNode.weight && tempRow.isSelected == false) {
+                    minimumNode = tempRow;
+                    index = i;
+                }
+            } else {
                 break;
             }
-            if (nodes.get(i).weight < min.weight && nodes.get(i).isSelected != true) {
-                min = nodes.get(i);
-            }
         }
-        min.isSelected = true;
-        return min;
+        return index;
     }
 
     public void display() {
-        for (int i = 0; i < nodes.size(); i++) {
-            if (nodes.get(i) == null) {
-                break;
+        // display the nodes of the huffman tree, starting from the index: 1.
+        try {
+            for (int i = 1; i < nodes.size(); i++) {
+                Node tempRow = nodes.get(i);
+                System.out.println("Row " + i + ": Data:" + tempRow.data + ", Weight:" + tempRow.weight + ", " +
+                        "Parent:" + tempRow.parentIndex + ", Left:" + tempRow.leftChildIndex + ", Right:" + tempRow
+                        .rightChildIndex + ", isSelected:" + tempRow.isSelected);
             }
-            System.out.println("Row " + i + ": Data:" + nodes.get(i).data + ", Weight:" + nodes.get(i).weight + ", "
-                    + "Parent:" + nodes.get(i).parentIndex + ", Left:" + nodes.get(i).leftChildIndex + ", Right:" +
-                    nodes.get(i).rightChildIndex);
+        } catch (Exception e) {
+            System.out.println("<END with exception>");
+        } finally {
+            System.out.println("<END>");
         }
-        System.out.println("<END>");
     }
 
     public void iterativePreorderTraverse() throws Exception {
@@ -131,7 +154,7 @@ public class SequentialHuffmanTree {
         return nodes;
     }
 
-    private class Node {
+    public class Node {
         Object data;
         int weight;
         int parentIndex;
