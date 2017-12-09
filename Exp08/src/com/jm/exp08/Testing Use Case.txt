@@ -1,18 +1,18 @@
-Enter the category of the graph:
+Enter the category of the AMGraph:
     (UndirectedGraph,
     DirectedGraph,
     UndirectedNetwork,
     DirectedNetwork): UndirectedNetwork
 Enter the amount of vertex(es): 6
 Enter the amount of arc(s): 8
-Enter the identification of the vertex of the graph:
+Enter the identification of the vertex of the AMGraph:
 Vertex No. 1: A
 Vertex No. 2: B
 Vertex No. 3: C
 Vertex No. 4: D
 Vertex No. 5: E
 Vertex No. 6: F
-Enter the each vertex of the graph:
+Enter the each vertex of the AMGraph:
 0
 1
 3

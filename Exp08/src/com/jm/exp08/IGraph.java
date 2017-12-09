@@ -15,4 +15,6 @@ public interface IGraph {
 
     int nextAdjacentVertex(int v, int w) throws Exception;
 
+    int[] findVertexesByArc(int weightOfArc);
+
 }
