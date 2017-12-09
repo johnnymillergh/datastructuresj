@@ -77,31 +77,60 @@ public class Graph implements IGraph {
 
     @Override
     public int getVertexAmount() {
-        return 0;
+        return vertexAmount;
     }
 
     @Override
     public int getArcAmount() {
-        return 0;
+        return arcAmount;
     }
 
     @Override
-    public Object getVertex() throws Exception {
-        return null;
+    public Object getVertex(int index) throws Exception {
+        if (index < 0 || index >= vertexAmount) {
+            throw new Exception("The vertex No. " + index + " does not exist.");
+        }
+        return vertexes[index];
     }
 
     @Override
-    public int locateVertex() {
-        return 0;
+    public int locateVertex(Object vertex) {
+        for (int i = 0; i < vertexAmount; i++) {
+            if (vertexes[i].equals(vertex)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
-    public int firstAdjacentVertex() throws Exception {
-        return 0;
+    public int firstAdjacentVertex(int v) throws Exception {
+        if (v < 0 || v >= vertexAmount) {
+            throw new Exception("The vertex No. " + v + " does not exist.");
+        }
+        for (int i = 0; i < vertexAmount; i++) {
+            if (arcs[v][i] != 0 && arcs[v][i] < INFINITY) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
-    public int nextAdjacentVertex() throws Exception {
+    public int nextAdjacentVertex(int v, int w) throws Exception {
         return 0;
+    }
+
+    public void display() {
+        for (int i = 0; i < vertexAmount; i++) {
+            for (int j = 0; j < vertexAmount; j++) {
+                if (arcs[i][j] == INFINITY) {
+                    System.out.print("* ");
+                } else {
+                    System.out.print(arcs[i][j] + " ");
+                }
+            }
+            System.out.println();
+        }
     }
 }

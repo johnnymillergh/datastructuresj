@@ -7,12 +7,12 @@ public interface IGraph {
 
     int getArcAmount();
 
-    Object getVertex() throws Exception;
+    Object getVertex(int v) throws Exception;
 
-    int locateVertex();
+    int locateVertex(Object vertex);
 
-    int firstAdjacentVertex() throws Exception;
+    int firstAdjacentVertex(int v) throws Exception;
 
-    int nextAdjacentVertex() throws Exception;
+    int nextAdjacentVertex(int v, int w) throws Exception;
 
 }

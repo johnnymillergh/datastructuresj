@@ -1,0 +1,47 @@
+Enter the category of the graph:
+    (UndirectedGraph,
+    DirectedGraph,
+    UndirectedNetwork,
+    DirectedNetwork): UndirectedNetwork
+Enter the amount of vertex(es): 6
+Enter the amount of arc(s): 8
+Enter the identification of the vertex of the graph:
+Vertex No. 1: A
+Vertex No. 2: B
+Vertex No. 3: C
+Vertex No. 4: D
+Vertex No. 5: E
+Vertex No. 6: F
+Enter the each vertex of the graph:
+0
+1
+3
+0
+4
+1
+1
+2
+5
+1
+4
+4
+2
+3
+2
+2
+4
+6
+3
+4
+7
+3
+5
+8
+* 3 * * 1 *
+3 * 5 * 4 *
+* 5 * 2 6 *
+* * 2 * 7 8
+1 4 6 7 * *
+* * * 8 * *
+
+Process finished with exit code 0

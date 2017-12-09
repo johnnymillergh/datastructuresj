@@ -6,5 +6,6 @@ public class Main {
         // write your code here
         Graph graph = new Graph();
         graph.create();
+        graph.display();
     }
 }
