@@ -32,8 +32,8 @@ public class AMGraph implements IGraph {
                 "    DirectedGraph,\n" +
                 "    UndirectedNetwork,\n" +
                 "    DirectedNetwork): ");
-//        String str = KeyInput.readString();
-        String str = "UndirectedNetwork";
+        String str = KeyInput.readString();
+//        String str = "UndirectedNetwork";
         GraphCategory category = GraphCategory.valueOf(str);
         switch (category) {
             case UndirectedGraph:
