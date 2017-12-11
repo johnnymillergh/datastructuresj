@@ -11,7 +11,7 @@ public class Main {
         mergeSort.sort();
         mergeSort.display();
 
-        System.out.println("<Exp09-01>");
+        System.out.println("<Exp09-02>");
         System.out.println("e.g. {Mode=Multiplicity}");
         int[] data2 = {1, 2, 2, 7, 2, 7, 5};
         MultiplicityMode multiplicityMode = new MultiplicityMode(data2);
