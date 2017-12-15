@@ -3,6 +3,7 @@ package com.jm.exp06;
 import com.jm.exp06.huffmantree.HuffmanDictionary;
 import com.jm.exp06.huffmantree.SequentialHuffmanTree;
 import com.jm.exp06.io.HuffmanTreeHelper;
+import com.jm.exp06.operation.MyDecoder;
 import com.jm.exp06.operation.MyEncoder;
 
 public class Main {
@@ -33,8 +34,15 @@ public class Main {
         MyEncoder myEncoder = new MyEncoder(dictionary, helper);
         myEncoder.encode();
         myEncoder.saveEncodedContent2File("The three musketeers - Copy(encoded_uncompressed).cod");
-        myEncoder.displayEncodedContent(0, 20);
+        myEncoder.displayEncodedContent(0, 5);
 
+        // Decode the encoded file to plain text.
+        HuffmanTreeHelper helper2 = new HuffmanTreeHelper("C:/Users/Johnny/Desktop/The three musketeers - Copy" +
+                "(encoded_uncompressed).cod");
+        helper2.readFile();
+        MyDecoder myDecoder = new MyDecoder(dictionary, helper2);
+        myDecoder.decode();
+        myDecoder.displayDecodedContent(0, 100);
 
         // Display how long the program takes.
         long endTime = System.nanoTime();
