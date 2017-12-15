@@ -9,7 +9,7 @@ public class SequentialHuffmanTree {
 
     public SequentialHuffmanTree(HashMap<Character, Integer> frequencyList) {
         nodes = new Vector<>();
-//        nodes.setSize(2 * frequencyList.size());
+        nodes.setSize(1);
         for (Map.Entry<Character, Integer> row : frequencyList.entrySet()) {
             nodes.add(new Node(row.getKey(), row.getValue()));
 //            System.out.println("Adding: " + row.getKey() + ", " + row.getValue());
@@ -21,13 +21,24 @@ public class SequentialHuffmanTree {
     }
 
     public void generate() {
-        int index = 1;
+        int parentIndex;
         int[] mins = new int[2];
-        Node firstMinimumNode, secondMinimumNode;
-        while (true) {
+        Node firstMinimumNode, secondMinimumNode, parentNode;
+        for (int i = 0; i < nodes.size() - 2; i++) {
             mins = selectMinimumIndexes();
-            if (mins[0] == 0) {
-                break;
+            firstMinimumNode = nodes.get(mins[0]);
+            secondMinimumNode = nodes.get(mins[1]);
+            if (firstMinimumNode != null && secondMinimumNode != null) {
+                parentNode = new Node(0, firstMinimumNode.weight + secondMinimumNode.weight);
+                parentNode.leftChildIndex = mins[0];
+                parentNode.rightChildIndex = mins[1];
+                parentNode.isSelected = false;
+                nodes.add(parentNode);
+                parentIndex = nodes.indexOf(parentNode);
+                firstMinimumNode.isSelected = true;
+                firstMinimumNode.parentIndex = parentIndex;
+                secondMinimumNode.isSelected = true;
+                secondMinimumNode.parentIndex = parentIndex;
             }
         }
     }

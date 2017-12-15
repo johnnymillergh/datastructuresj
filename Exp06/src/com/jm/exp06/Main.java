@@ -1,5 +1,7 @@
 package com.jm.exp06;
 
+import java.util.Vector;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -18,5 +20,12 @@ public class Main {
         huffmanTree.generate();
         System.out.println("======================");
         huffmanTree.display();
+//        Vector<Integer> vector = new Vector<>();
+//        vector.setSize(1);
+//        vector.add(1);
+//        vector.add(2);
+//        vector.add(3);
+//        vector.set(0, 10);
+//        System.out.println(vector.toString());
     }
 }
