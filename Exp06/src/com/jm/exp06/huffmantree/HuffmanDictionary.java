@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Vector;
 
 public class HuffmanDictionary {
-    HashMap<Object, String> dictionary;
+    private HashMap<Object, String> dictionary;
     private Vector<SequentialHuffmanTree.Node> nodes;
     SequentialStack stack;
     StringBuffer codeOfSingleCharacter;
@@ -92,8 +92,8 @@ public class HuffmanDictionary {
         }
     }
 
-    public void save() {
-        MyFileWriter writer = new MyFileWriter("The three musketeers.dic");
+    public void saveDictionaryObject2File(String fileName) {
+        MyFileWriter writer = new MyFileWriter(fileName);
         writer.write(dictionary);
     }
 

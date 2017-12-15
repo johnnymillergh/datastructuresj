@@ -4,29 +4,29 @@ import java.io.*;
 
 public class MyFileWriter {
     String fileName;
-    StringBuffer content;
+    String content;
 
     public MyFileWriter(String fileName) {
         this.fileName = fileName;
     }
 
-    public MyFileWriter(String fileName, StringBuffer content) {
+    public MyFileWriter(String fileName, String content) {
         this.fileName = fileName;
         this.content = content;
     }
 
     public void write() {
-        String contentString = content.toString();
-        System.out.println("contentString length: " + contentString.length());
+        System.out.println("contentString length: " + content.length());
         try {
             FileWriter writer = new FileWriter("C:/Users/Johnny/Desktop/" + fileName);
-            writer.write(contentString);
+            writer.write(content);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // Another way to write to file.
 //        byte[] bytes = new byte[1024];
-//        bytes = contentString.getBytes();
+//        bytes = content.getBytes();
 //        try {
 //            FileOutputStream in = new FileOutputStream("C:/Users/Johnny/Desktop/"+fileName);
 //            try {

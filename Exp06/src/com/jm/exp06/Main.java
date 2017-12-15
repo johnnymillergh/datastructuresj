@@ -3,13 +3,7 @@ package com.jm.exp06;
 import com.jm.exp06.huffmantree.HuffmanDictionary;
 import com.jm.exp06.huffmantree.SequentialHuffmanTree;
 import com.jm.exp06.io.HuffmanTreeHelper;
-import com.jm.exp06.io.MyFileReader;
-import com.jm.exp06.io.MyFileWriter;
-import com.jm.exp06.operation.Encoder;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.HashMap;
+import com.jm.exp06.operation.MyEncoder;
 
 public class Main {
 
@@ -18,14 +12,14 @@ public class Main {
 
         // Read file and get the frequency list of the alphabet.
         HuffmanTreeHelper helper = new HuffmanTreeHelper("E:/Semester Project/201702 Fall Semester/01. Data " +
-                "Structures and Algorithms/02. Experiment/世界名著txt/Alexandre Dumas/The three musketeers.txt");
+                "Structures and Algorithms/02. Experiment/世界名著txt/Alexandre Dumas/The three musketeers - Copy.txt");
         helper.readFile();
         helper.count();
 
         // Create Huffman tree by using the frequency list of the alphabet.
         SequentialHuffmanTree huffmanTree = new SequentialHuffmanTree(helper.getFrequencyList());
         huffmanTree.display();
-        huffmanTree.generateTree();
+        huffmanTree.generate();
         System.out.println("======================");
         huffmanTree.display();
 
@@ -33,15 +27,14 @@ public class Main {
         HuffmanDictionary dictionary = new HuffmanDictionary(huffmanTree.getNodes());
         dictionary.generate();
         dictionary.display();
-        dictionary.save();
-//        Encoder encoder = new Encoder(huffmanTree, helper);
-//        encoder.encode();
-//        encoder.displayEncodedContent();
+        dictionary.saveDictionaryObject2File("The three musketeers - Copy.dic");
 
-        // Write uncompressed huffman code to file.
-//        MyFileWriter writer = new MyFileWriter("The three musketeers (encoded_uncompressed).cod", encoder
-//                .getEncodedContent());
-//        writer.write();
+        // Encode the source file to cipher text.
+        MyEncoder myEncoder = new MyEncoder(dictionary, helper);
+        myEncoder.encode();
+        myEncoder.saveEncodedContent2File("The three musketeers - Copy(encoded_uncompressed).cod");
+        myEncoder.displayEncodedContent(0, 20);
+
 
         // Display how long the program takes.
         long endTime = System.nanoTime();

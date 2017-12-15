@@ -19,7 +19,7 @@ public class SequentialHuffmanTree {
         nodes = new Vector<>(initialCapacity, capacityIncrement);
     }
 
-    public void generateTree() {
+    public void generate() {
         int parentIndex;
         int[] mins = new int[2];
         Node firstMinimumNode, secondMinimumNode, parentNode;
