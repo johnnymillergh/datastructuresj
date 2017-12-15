@@ -49,4 +49,8 @@ public class HuffmanTreeHelper {
     public HashMap<Character, Integer> getFrequencyList() {
         return frequencyList;
     }
+
+    public String getContent() {
+        return content;
+    }
 }

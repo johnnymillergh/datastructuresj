@@ -12,7 +12,6 @@ public class SequentialHuffmanTree {
         nodes.setSize(1);
         for (Map.Entry<Character, Integer> row : frequencyList.entrySet()) {
             nodes.add(new Node(row.getKey(), row.getValue()));
-//            System.out.println("Adding: " + row.getKey() + ", " + row.getValue());
         }
     }
 
@@ -20,7 +19,7 @@ public class SequentialHuffmanTree {
         nodes = new Vector<>(initialCapacity, capacityIncrement);
     }
 
-    public void generate() {
+    public void generateTree() {
         int parentIndex;
         int[] mins = new int[2];
         Node firstMinimumNode, secondMinimumNode, parentNode;
@@ -75,6 +74,10 @@ public class SequentialHuffmanTree {
         resultIndex[0] = index1;
         resultIndex[1] = index2;
         return resultIndex;
+    }
+
+    public void generateCode() {
+
     }
 
     public void display() {

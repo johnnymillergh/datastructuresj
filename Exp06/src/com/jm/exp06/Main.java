@@ -1,12 +1,9 @@
 package com.jm.exp06;
 
-import java.util.Vector;
-
 public class Main {
 
     public static void main(String[] args) {
-//        long startTime = System.nanoTime();
-//        long endTime = System.nanoTime();
+        long startTime = System.nanoTime();
 
         // Read file and get the frequency list of the alphabet.
         HuffmanTreeHelper helper = new HuffmanTreeHelper("E:/Semester Project/201702 Fall Semester/01. Data " +
@@ -17,9 +14,18 @@ public class Main {
         // Create Huffman tree by using the frequency list of the alphabet.
         SequentialHuffmanTree huffmanTree = new SequentialHuffmanTree(helper.getFrequencyList());
         huffmanTree.display();
-        huffmanTree.generate();
+        huffmanTree.generateTree();
         System.out.println("======================");
         huffmanTree.display();
+
+        // Generate huffman code.
+
+
+        // Display how long the program takes.
+        long endTime = System.nanoTime();
+        System.out.println("Time: " + (endTime - startTime) * 0.000000001);
+    }
+}
 //        Vector<Integer> vector = new Vector<>();
 //        vector.setSize(1);
 //        vector.add(1);
@@ -27,5 +33,3 @@ public class Main {
 //        vector.add(3);
 //        vector.set(0, 10);
 //        System.out.println(vector.toString());
-    }
-}
