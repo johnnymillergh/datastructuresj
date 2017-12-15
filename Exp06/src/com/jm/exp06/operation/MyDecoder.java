@@ -3,6 +3,7 @@ package com.jm.exp06.operation;
 import com.jm.exp06.huffmantree.HuffmanDictionary;
 import com.jm.exp06.huffmantree.SequentialStack;
 import com.jm.exp06.io.HuffmanTreeHelper;
+import com.jm.exp06.io.MyFileWriter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,8 +38,18 @@ public class MyDecoder {
         }
     }
 
+    public void savePlainText2File(String fileName) {
+        MyFileWriter myFileWriter = new MyFileWriter(fileName, content.toString());
+        myFileWriter.write();
+    }
+
     public void displayDecodedContent(int start, int end) {
         System.out.println("Decoded content length: " + content.length());
         System.out.println("Plain text (" + start + "-" + end + "): " + content.substring(start, end));
+    }
+
+    public void displayDecodedContent() {
+        System.out.println("Decoded content length: " + content.length());
+        System.out.println("Plain text: " + content);
     }
 }

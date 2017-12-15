@@ -43,4 +43,8 @@ public class MyEncoder {
     public StringBuffer getEncodedContent() {
         return encodedContent;
     }
+
+    public void setEncodedContent(StringBuffer encodedContent) {
+        this.encodedContent = encodedContent;
+    }
 }

@@ -3,6 +3,8 @@ package com.jm.exp06;
 import com.jm.exp06.huffmantree.HuffmanDictionary;
 import com.jm.exp06.huffmantree.SequentialHuffmanTree;
 import com.jm.exp06.io.HuffmanTreeHelper;
+import com.jm.exp06.operation.Compressor;
+import com.jm.exp06.operation.Decompressor;
 import com.jm.exp06.operation.MyDecoder;
 import com.jm.exp06.operation.MyEncoder;
 
@@ -13,7 +15,7 @@ public class Main {
 
         // Read file and get the frequency list of the alphabet.
         HuffmanTreeHelper helper = new HuffmanTreeHelper("E:/Semester Project/201702 Fall Semester/01. Data " +
-                "Structures and Algorithms/02. Experiment/世界名著txt/Alexandre Dumas/The three musketeers - Copy.txt");
+                "Structures and Algorithms/02. Experiment/世界名著txt/Alexandre Dumas/The three musketeers.txt");
         helper.readFile();
         helper.count();
 
@@ -28,28 +30,44 @@ public class Main {
         HuffmanDictionary dictionary = new HuffmanDictionary(huffmanTree.getNodes());
         dictionary.generate();
         dictionary.display();
-        dictionary.saveDictionaryObject2File("The three musketeers - Copy.dic");
+        dictionary.saveDictionaryObject2File("The three musketeers.dic");
 
         // Encode the source file to cipher text.
         MyEncoder myEncoder = new MyEncoder(dictionary, helper);
         myEncoder.encode();
-        myEncoder.saveEncodedContent2File("The three musketeers - Copy(encoded_uncompressed).cod");
+        myEncoder.saveEncodedContent2File("The three musketeers(uncompressed).cod");
         myEncoder.displayEncodedContent(0, 5);
+        long lengthOfUncompressedEncodedContent = myEncoder.getEncodedContent().length();
+
+        // Compress the cipher text and save to file.
+        String compressedCipherText = Compressor.binStringToHexadeimal(myEncoder.getEncodedContent().toString());
+        myEncoder.setEncodedContent(new StringBuffer(compressedCipherText));
+        myEncoder.saveEncodedContent2File("The three musketeers(compressed).cod");
+        myEncoder.displayEncodedContent(0, 5);
+        long lengthOfCompressedEncodedContent = compressedCipherText.length();
+        System.out.println("Compression ratio: " + lengthOfCompressedEncodedContent + "/" +
+                lengthOfUncompressedEncodedContent);
+
+        // Uncompress the compressed file.
+//        HuffmanTreeHelper helper2 = new HuffmanTreeHelper("C:/Users/Johnny/Desktop/The three musketeers" +
+//                "(compressed).cod");
+//        helper2.readFile();
+//        String uncompressedCipherText = Decompressor.hexStringToBinary(helper2.getContent());
+//        myEncoder.setEncodedContent(new StringBuffer(uncompressedCipherText));
+//        myEncoder.saveEncodedContent2File("The three musketeers(uncompressed)2.cod");
 
         // Decode the encoded file to plain text.
-        HuffmanTreeHelper helper2 = new HuffmanTreeHelper("C:/Users/Johnny/Desktop/The three musketeers - Copy" +
-                "(encoded_uncompressed).cod");
-        helper2.readFile();
-        MyDecoder myDecoder = new MyDecoder(dictionary, helper2);
+        HuffmanTreeHelper helper3 = new HuffmanTreeHelper("C:/Users/Johnny/Desktop/The three musketeers" +
+                "(uncompressed).cod");
+        helper3.readFile();
+        MyDecoder myDecoder = new MyDecoder(dictionary, helper3);
         myDecoder.decode();
         myDecoder.displayDecodedContent(0, 100);
+        myDecoder.savePlainText2File("The three musketeers_recovery.txt");
 
         // Display how long the program takes.
         long endTime = System.nanoTime();
         System.out.println("Time: " + (endTime - startTime) * 0.000000001);
-//        Byte b = new Byte((byte) 120);
-//        System.out.println(bit2byte("1111111"));
-//        System.out.println(byte2bits(bit2byte("1111111")));
     }
 
     public static byte bit2byte(String bString) {

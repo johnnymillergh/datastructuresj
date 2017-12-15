@@ -1,7 +1,6 @@
 package com.jm.exp06.io;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
+import java.io.*;
 import java.util.HashMap;
 
 public class HuffmanTreeHelper {
@@ -17,16 +16,27 @@ public class HuffmanTreeHelper {
     }
 
     public void readFile() {
+//        try {
+//            FileInputStream inputStream = new FileInputStream(filePath);
+//            byte[] bytes = new byte[1024];
+//            ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
+//            while (inputStream.read(bytes) != -1) {
+//                arrayOutputStream.write(bytes, 0, bytes.length);
+//            }
+//            inputStream.close();
+//            arrayOutputStream.close();
+//            content = new String(arrayOutputStream.toByteArray());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        File file = new File(filePath);
+        Long fileLength = file.length();
+        byte[] fileContent = new byte[fileLength.intValue()];
         try {
-            FileInputStream inputStream = new FileInputStream(filePath);
-            byte[] bytes = new byte[1024];
-            ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
-            while (inputStream.read(bytes) != -1) {
-                arrayOutputStream.write(bytes, 0, bytes.length);
-            }
-            inputStream.close();
-            arrayOutputStream.close();
-            content = new String(arrayOutputStream.toByteArray());
+            FileInputStream in = new FileInputStream(file);
+            in.read(fileContent);
+            in.close();
+            content = new String(fileContent);
         } catch (Exception e) {
             e.printStackTrace();
         }
