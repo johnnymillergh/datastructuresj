@@ -19,6 +19,7 @@ public class Encoder {
         encodedContent = new StringBuffer("");
     }
 
+    @SuppressWarnings("Duplicates")
     public void encode() {
         String content = helper.getContent();
         Vector<SequentialHuffmanTree.Node> nodes = huffmanTree.getNodes();
@@ -70,7 +71,7 @@ public class Encoder {
                 }
             }
 
-            // Get reversed code bu popping stack.
+            // Get reversed code by popping stack.
             while (true) {
                 if (!stack.isEmpty()) {
                     try {

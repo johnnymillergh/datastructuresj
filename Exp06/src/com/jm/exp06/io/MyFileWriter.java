@@ -1,14 +1,14 @@
 package com.jm.exp06.io;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class MyFileWriter {
     String fileName;
     StringBuffer content;
+
+    public MyFileWriter(String fileName) {
+        this.fileName = fileName;
+    }
 
     public MyFileWriter(String fileName, StringBuffer content) {
         this.fileName = fileName;
@@ -39,5 +39,16 @@ public class MyFileWriter {
 //            e.printStackTrace();
 //        }
 
+    }
+
+    public void write(Object o) {
+        try {
+            FileOutputStream outStream = new FileOutputStream("C:/Users/Johnny/Desktop/" + fileName);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outStream);
+            objectOutputStream.writeObject(o);
+            outStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
