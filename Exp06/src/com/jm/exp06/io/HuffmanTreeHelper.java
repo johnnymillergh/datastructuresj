@@ -1,4 +1,4 @@
-package com.jm.exp06;
+package com.jm.exp06.io;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;

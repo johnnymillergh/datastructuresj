@@ -1,4 +1,4 @@
-package com.jm.exp06;
+package com.jm.exp06.huffmantree;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

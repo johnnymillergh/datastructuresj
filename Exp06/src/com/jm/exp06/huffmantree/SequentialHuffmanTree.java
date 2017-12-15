@@ -1,4 +1,4 @@
-package com.jm.exp06;
+package com.jm.exp06.huffmantree;
 
 import java.util.HashMap;
 import java.util.Map;

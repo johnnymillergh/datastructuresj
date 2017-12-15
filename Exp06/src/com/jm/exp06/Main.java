@@ -1,5 +1,8 @@
 package com.jm.exp06;
 
+import com.jm.exp06.huffmantree.SequentialHuffmanTree;
+import com.jm.exp06.io.HuffmanTreeHelper;
+
 public class Main {
 
     public static void main(String[] args) {

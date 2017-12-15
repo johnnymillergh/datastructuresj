@@ -1,4 +1,4 @@
-package com.jm.exp06;
+package com.jm.exp06.huffmantree;
 
 public interface IStack<ElementType> {
     public void clear();

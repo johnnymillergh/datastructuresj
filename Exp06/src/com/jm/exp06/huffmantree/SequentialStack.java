@@ -1,4 +1,4 @@
-package com.jm.exp06;
+package com.jm.exp06.huffmantree;
 
 public class SequentialStack implements IStack<Object> {
     private Object[] stackElement;
