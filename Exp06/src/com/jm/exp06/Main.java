@@ -2,6 +2,7 @@ package com.jm.exp06;
 
 import com.jm.exp06.huffmantree.SequentialHuffmanTree;
 import com.jm.exp06.io.HuffmanTreeHelper;
+import com.jm.exp06.io.MyFileWriter;
 import com.jm.exp06.operation.Encoder;
 
 public class Main {
@@ -26,6 +27,11 @@ public class Main {
         Encoder encoder = new Encoder(huffmanTree, helper);
         encoder.encode();
         encoder.displayEncodedContent();
+
+        // Write uncompressed huffman code to file.
+        MyFileWriter writer = new MyFileWriter("The three musketeers (encoded_uncompressed).cod", encoder
+                .getEncodedContent());
+        writer.write();
 
         // Display how long the program takes.
         long endTime = System.nanoTime();

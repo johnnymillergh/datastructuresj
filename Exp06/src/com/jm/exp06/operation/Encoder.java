@@ -83,12 +83,17 @@ public class Encoder {
                 }
             }
             if (i == content.length() - 1) {
-                System.out.println("Encoded character "+(i + 1) + " times.");
+                System.out.println("Encoded character " + (i + 1) + " times.");
             }
         }
     }
 
     public void displayEncodedContent() {
-//        System.out.println(encodedContent);
+        System.out.println("Encoded content length: " + encodedContent.length());
+        System.out.println("Cypher text (0-100): " + encodedContent.substring(0, 100));
+    }
+
+    public StringBuffer getEncodedContent() {
+        return encodedContent;
     }
 }
