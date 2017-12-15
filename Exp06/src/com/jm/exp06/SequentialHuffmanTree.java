@@ -9,11 +9,9 @@ public class SequentialHuffmanTree {
 
     public SequentialHuffmanTree(HashMap<Character, Integer> frequencyList) {
         nodes = new Vector<>();
-        nodes.setSize(2 * frequencyList.size());
-        int index = 1;
+//        nodes.setSize(2 * frequencyList.size());
         for (Map.Entry<Character, Integer> row : frequencyList.entrySet()) {
-            nodes.add(index, new Node(row.getKey(), row.getValue()));
-            index++;
+            nodes.add(new Node(row.getKey(), row.getValue()));
 //            System.out.println("Adding: " + row.getKey() + ", " + row.getValue());
         }
     }
@@ -24,44 +22,48 @@ public class SequentialHuffmanTree {
 
     public void generate() {
         int index = 1;
-        int firstMinimumIndex = 0, secondMinimumIndex = 0;
+        int[] mins = new int[2];
         Node firstMinimumNode, secondMinimumNode;
-        for (; ; index++) {
-            // Select the 1st node
-            firstMinimumIndex = selectMinimumIndex();
-            firstMinimumNode = nodes.get(firstMinimumIndex);
-            firstMinimumNode.isSelected = true;
-//            nodes.setElementAt(firstMinimumNode, firstMinimumIndex);
-
-            // Select the 1st node
-            secondMinimumIndex = selectMinimumIndex();
-            secondMinimumNode = nodes.get(secondMinimumIndex);
-            secondMinimumNode.isSelected = true;
-//            nodes.setElementAt(secondMinimumNode, secondMinimumIndex);
-
-            // New a parent node
-            nodes.add(new Node(firstMinimumNode.weight + secondMinimumNode.weight, 0, firstMinimumIndex,
-                    secondMinimumIndex));
-            firstMinimumNode.parentIndex = index;
-            secondMinimumNode.parentIndex = index;
+        while (true) {
+            mins = selectMinimumIndexes();
+            if (mins[0] == 0) {
+                break;
+            }
         }
     }
 
-    public int selectMinimumIndex() {
+    public int[] selectMinimumIndexes() {
         Node minimumNode = new Node(0, Integer.MAX_VALUE);
-        int index = 0;
+        int[] resultIndex = new int[2];
+        int index1 = 0, index2 = 0;
         for (int i = 1; i < nodes.size(); i++) {
             Node tempRow = nodes.get(i);
             if (tempRow != null) {
                 if (tempRow.weight < minimumNode.weight && tempRow.isSelected == false) {
                     minimumNode = tempRow;
-                    index = i;
+                    index1 = i;
                 }
             } else {
                 break;
             }
         }
-        return index;
+        minimumNode = new Node(0, Integer.MAX_VALUE);
+        for (int i = 1; i < nodes.size(); i++) {
+            Node tempRow = nodes.get(i);
+            if (tempRow != null) {
+                if (tempRow.weight < minimumNode.weight && tempRow.isSelected == false) {
+                    if (i != index1) {
+                        minimumNode = tempRow;
+                        index2 = i;
+                    }
+                }
+            } else {
+                break;
+            }
+        }
+        resultIndex[0] = index1;
+        resultIndex[1] = index2;
+        return resultIndex;
     }
 
     public void display() {
@@ -69,14 +71,17 @@ public class SequentialHuffmanTree {
         try {
             for (int i = 1; i < nodes.size(); i++) {
                 Node tempRow = nodes.get(i);
-                System.out.println("Row " + i + ": Data:" + tempRow.data + ", Weight:" + tempRow.weight + ", " +
-                        "Parent:" + tempRow.parentIndex + ", Left:" + tempRow.leftChildIndex + ", Right:" + tempRow
-                        .rightChildIndex + ", isSelected:" + tempRow.isSelected);
+                if (tempRow != null) {
+                    System.out.println("Row " + i + ": Data:" + tempRow.data + ", Weight:" + tempRow.weight + ", " +
+                            "Parent:" + tempRow.parentIndex + ", Left:" + tempRow.leftChildIndex + ", Right:" + tempRow
+                            .rightChildIndex + ", isSelected:" + tempRow.isSelected);
+                }
             }
         } catch (Exception e) {
             System.out.println("<END with exception>");
         } finally {
             System.out.println("<END>");
+            System.out.println("Length: " + nodes.size());
         }
     }
 

@@ -14,11 +14,9 @@ public class Main {
 
         // Create Huffman tree by using the frequency list of the alphabet.
         SequentialHuffmanTree huffmanTree = new SequentialHuffmanTree(helper.getFrequencyList());
-        System.out.println(huffmanTree.selectMinimumIndex());
         huffmanTree.display();
         huffmanTree.generate();
-//        SequentialHuffmanTree.Node node = huffmanTree.getNodes().get(2);
-//        node.isSelected = true;
+        System.out.println("======================");
         huffmanTree.display();
     }
 }
