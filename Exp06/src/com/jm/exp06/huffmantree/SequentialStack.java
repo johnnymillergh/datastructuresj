@@ -52,10 +52,11 @@ public class SequentialStack implements IStack<Object> {
     @Override
     public void display() {
         if (stackElement != null) {
+            System.out.print("<TOP>");
             for (int i = top - 1; i >= 0; i--) {
                 System.out.print(stackElement[i] + " ");
             }
-            System.out.println("|");
+            System.out.println("<BOTTOM>");
         }
     }
 }

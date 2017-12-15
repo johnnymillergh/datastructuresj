@@ -34,6 +34,7 @@ public class HuffmanTreeHelper {
 
     public void count() {
         Character tempCharacter;
+        System.out.println("Text file has " + content.length() + " characters.");
         for (int i = 0; i < content.length(); i++) {
             tempCharacter = content.charAt(i);
             if (frequencyList.get(tempCharacter) == null) {

@@ -2,6 +2,7 @@ package com.jm.exp06;
 
 import com.jm.exp06.huffmantree.SequentialHuffmanTree;
 import com.jm.exp06.io.HuffmanTreeHelper;
+import com.jm.exp06.operation.Encoder;
 
 public class Main {
 
@@ -22,7 +23,9 @@ public class Main {
         huffmanTree.display();
 
         // Generate huffman code.
-
+        Encoder encoder = new Encoder(huffmanTree, helper);
+        encoder.encode();
+        encoder.displayEncodedContent();
 
         // Display how long the program takes.
         long endTime = System.nanoTime();

@@ -28,7 +28,7 @@ public class SequentialHuffmanTree {
             firstMinimumNode = nodes.get(mins[0]);
             secondMinimumNode = nodes.get(mins[1]);
             if (firstMinimumNode != null && secondMinimumNode != null) {
-                parentNode = new Node(0, firstMinimumNode.weight + secondMinimumNode.weight);
+                parentNode = new Node(null, firstMinimumNode.weight + secondMinimumNode.weight);
                 parentNode.leftChildIndex = mins[0];
                 parentNode.rightChildIndex = mins[1];
                 parentNode.isSelected = false;
@@ -94,8 +94,8 @@ public class SequentialHuffmanTree {
         } catch (Exception e) {
             System.out.println("<END with exception>");
         } finally {
-            System.out.println("<END>");
-            System.out.println("Length: " + nodes.size());
+            System.out.println("<END of HuffmanTree>");
+            System.out.println("Huffman tree has " + nodes.size()+" nodes.");
         }
     }
 
@@ -133,6 +133,23 @@ public class SequentialHuffmanTree {
         System.out.print(node.data + " ");
     }
 
+    public int findLeafNodeByData(Character data) {
+        int index = 1;
+        Character tempData;
+        while (true) {
+            tempData = (Character) nodes.get(index).data;
+            if (tempData == null) {
+                break;
+            }
+            if (tempData.compareTo(data) == 0) {
+                return index;
+            } else {
+                index++;
+            }
+        }
+        return index;
+    }
+
     private int getIndexOfLeftChildOf(Node currentRootNode) {
         int indexRoot = indexOf(currentRootNode);
         int indexLeft = indexRoot * 2 + 1;
@@ -162,8 +179,8 @@ public class SequentialHuffmanTree {
     }
 
     public Node getRootNode() {
-        if (!this.isEmpty()) {
-            return nodes.get(0);
+        if (!this.isEmpty() && (nodes.get(nodes.size()).data == null)) {
+            return nodes.get(nodes.size());
         } else {
             return null;
         }
@@ -199,6 +216,30 @@ public class SequentialHuffmanTree {
             this.parentIndex = parentIndex;
             this.leftChildIndex = leftChildIndex;
             this.rightChildIndex = rightChildIndex;
+        }
+
+        public Object getData() {
+            return data;
+        }
+
+        public int getWeight() {
+            return weight;
+        }
+
+        public int getParentIndex() {
+            return parentIndex;
+        }
+
+        public int getLeftChildIndex() {
+            return leftChildIndex;
+        }
+
+        public int getRightChildIndex() {
+            return rightChildIndex;
+        }
+
+        public boolean isSelected() {
+            return isSelected;
         }
     }
 }
