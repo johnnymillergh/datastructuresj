@@ -1,4 +1,9 @@
-package com.jm.exp07;
+package com.jm.exp07.adjacent_matrix;
+
+import com.jm.exp07.DisjointSet;
+import com.jm.exp07.GraphCategory;
+import com.jm.exp07.IGraph;
+import com.jm.exp07.KeyInput;
 
 import java.util.ArrayList;
 import java.util.List;
