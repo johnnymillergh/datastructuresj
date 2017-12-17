@@ -10,6 +10,7 @@ import java.util.List;
 
 import static java.util.Arrays.sort;
 
+@SuppressWarnings("Duplicates")
 public class AMGraph implements IGraph {
 
     public final static int INFINITY = Integer.MAX_VALUE;
@@ -81,7 +82,30 @@ public class AMGraph implements IGraph {
     }
 
     private void createUndirectedGraph() {
-        // Todo:
+        int tempAmount = 0;
+        System.out.print("Enter the amount of vertex(es): ");
+        vertexAmount = KeyInput.readInt();
+        System.out.print("Enter the amount of arc(s): ");
+        arcAmount = KeyInput.readInt();
+        vertexes = new Object[vertexAmount];
+        System.out.println("Enter the identification of the vertex of the graph: ");
+        for (int i = 0; i < vertexAmount; i++) {
+            System.out.print("Vertex No. " + (i + 1) + ": ");
+            vertexes[i] = KeyInput.readString();
+        }
+        // Initial the adjacent matrix
+        adjacentMatrix = new int[vertexAmount][vertexAmount];
+        for (int i = 0; i < vertexAmount; i++) {
+            for (int j = 0; j < vertexAmount; j++) {
+                adjacentMatrix[i][j] = INFINITY;
+            }
+        }
+        System.out.println("Enter the each vertex of the graph: ");
+        for (int i = 0; i < arcAmount; i++) {
+            int a = KeyInput.readInt();
+            int b = KeyInput.readInt();
+            adjacentMatrix[a][b] = adjacentMatrix[b][a] = 1;
+        }
     }
 
     @Override
@@ -154,6 +178,7 @@ public class AMGraph implements IGraph {
     }
 
     public void display() {
+        System.out.println("Adjacency matrix: ");
         for (int i = 0; i < vertexAmount; i++) {
             for (int j = 0; j < vertexAmount; j++) {
                 if (adjacentMatrix[i][j] == INFINITY) {

@@ -10,6 +10,9 @@ public class ALGraph implements IGraph {
     private int arcAmount;
     private VNode[] vertexes;
 
+    public ALGraph() {
+    }
+
     public ALGraph(GraphCategory category, int vertexAmount, int arcAmount, VNode[] vertexes) {
         this.category = category;
         this.vertexAmount = vertexAmount;
@@ -47,7 +50,7 @@ public class ALGraph implements IGraph {
         System.out.println("Enter the identification of the vertex of the graph: ");
         for (int i = 0; i < vertexAmount; i++) {
             System.out.print("Vertex No. " + (i + 1) + ": ");
-            vertexes[i].setData(KeyInput.readString());
+            vertexes[i] = new VNode(KeyInput.readString());
         }
         System.out.println("Enter the each arc of the graph: ");
         for (int i = 0; i < 2 * arcAmount; i++) {
@@ -81,7 +84,9 @@ public class ALGraph implements IGraph {
 
     @Override
     public Object getVertex(int v) throws Exception {
-        return null;
+        if (v < 0 && v >= vertexAmount)
+            throw new Exception("Vertex No. " + v + "doesn't exist.");
+        return vertexes[v].getData();
     }
 
     @Override
@@ -115,5 +120,21 @@ public class ALGraph implements IGraph {
 
     public VNode[] getVertexes() {
         return vertexes;
+    }
+
+    public void display() {
+        System.out.println("Adjacency list:");
+        for (int i = 0; i < vertexAmount; i++) {
+            VNode v = vertexes[i];
+            System.out.print(v.getData() + " ");
+            for (ArcNode arc = v.getFirstArc(); arc != null; arc = arc.getNextArc()) {
+                try {
+                    System.out.print("->" + getVertex(arc.getAdjVertex()) + ((arc.getWeight() == 0) ? "" : arc.getWeight()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println();
+        }
     }
 }

@@ -1,0 +1,42 @@
+"C:\Program Files\Java\jdk1.8.0_111\bin\java" "-javaagent:D:\Program Files\JetBrains\IntelliJ IDEA 2017.3\lib\idea_rt.jar=62044:D:\Program Files\JetBrains\IntelliJ IDEA 2017.3\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0_111\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\rt.jar;C:\Users\Johnny\IdeaProjects\DataSructures\Exp07\out\production\Exp07" com.jm.exp07.Main
+<Exp07-01>
+Enter the category of the graph: 
+    (UndirectedGraph,
+    DirectedGraph,
+    UndirectedNetwork,
+    DirectedNetwork): UndirectedGraph
+Enter vertexes amount: 5
+Enter arc amount: 6
+Enter the identification of the vertex of the graph: 
+Vertex No. 1: a
+Vertex No. 2: b
+Vertex No. 3: c
+Vertex No. 4: d
+Vertex No. 5: e
+Enter the each arc of the graph: 
+0
+1
+0
+3
+1
+0
+1
+2
+1
+4
+2
+1
+2
+3
+2
+4
+3
+0
+3
+2
+4
+1
+4
+2
+
+Process finished with exit code 0
