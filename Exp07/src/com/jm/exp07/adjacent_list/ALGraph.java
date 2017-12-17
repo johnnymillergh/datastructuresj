@@ -8,13 +8,13 @@ public class ALGraph implements IGraph {
     private GraphCategory category;
     private int vertexAmount;
     private int arcAmount;
-    private VNode[] vertex;
+    private VNode[] vertexes;
 
-    public ALGraph(GraphCategory category, int vertexAmount, int arcAmount, VNode[] vertex) {
+    public ALGraph(GraphCategory category, int vertexAmount, int arcAmount, VNode[] vertexes) {
         this.category = category;
         this.vertexAmount = vertexAmount;
         this.arcAmount = arcAmount;
-        this.vertex = vertex;
+        this.vertexes = vertexes;
     }
 
     public void createGraph() {
@@ -39,7 +39,29 @@ public class ALGraph implements IGraph {
     }
 
     private void createUndirectedGraph() {
+        System.out.print("Enter vertexes amount: ");
+        vertexAmount = KeyInput.readInt();
+        System.out.print("Enter arc amount: ");
+        arcAmount = KeyInput.readInt();
+        vertexes = new VNode[vertexAmount];
+        System.out.println("Enter the identification of the vertex of the graph: ");
+        for (int i = 0; i < vertexAmount; i++) {
+            System.out.print("Vertex No. " + (i + 1) + ": ");
+            vertexes[i].setData(KeyInput.readString());
+        }
+        System.out.println("Enter the each arc of the graph: ");
+        for (int i = 0; i < 2 * arcAmount; i++) {
+            int v1 = KeyInput.readInt();
+            int v2 = KeyInput.readInt();
+            addArc(v1, v2);
+        }
+    }
 
+    private void addArc(int v1, int v2) {
+        // Fore-extrapolation method.
+        ArcNode arcNode = new ArcNode(v2);
+        arcNode.setNextArc(vertexes[v1].getFirstArc());
+        vertexes[v1].setFirstArc(arcNode);
     }
 
     @Override
@@ -64,6 +86,11 @@ public class ALGraph implements IGraph {
 
     @Override
     public int locateVertex(Object vertex) {
+        for (int i = 0; i < vertexAmount; i++) {
+            if (vertexes[1].getData().equals(vertex)) {
+                return i;
+            }
+        }
         return 0;
     }
 
@@ -86,7 +113,7 @@ public class ALGraph implements IGraph {
         return category;
     }
 
-    public VNode[] getVertex() {
-        return vertex;
+    public VNode[] getVertexes() {
+        return vertexes;
     }
 }

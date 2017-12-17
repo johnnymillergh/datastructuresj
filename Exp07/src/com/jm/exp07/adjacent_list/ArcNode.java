@@ -17,6 +17,10 @@ public class ArcNode {
         this(adjVertex, weight, null);
     }
 
+    public ArcNode(int adjVertex, ArcNode nextArc) {
+        this(adjVertex, 0, nextArc);
+    }
+
     public ArcNode(int adjVertex, int weight, ArcNode nextArc) {
         this.adjVertex = adjVertex;
         this.weight = weight;
