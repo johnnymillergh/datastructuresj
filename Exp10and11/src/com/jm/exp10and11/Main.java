@@ -11,5 +11,10 @@ public class Main {
         maximalSubductionSum.display();
 
         System.out.println("<Exp11-01>");
+        float[] value = {3, 5, 1, 2};
+        float[] weight = {4, 8, 3, 10};
+        KnapsackProblem knapsackProblem = new KnapsackProblem(value, weight, 20);
+        knapsackProblem.go();
+        knapsackProblem.display();
     }
 }
