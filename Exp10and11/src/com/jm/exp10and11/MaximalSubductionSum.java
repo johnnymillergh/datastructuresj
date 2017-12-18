@@ -2,21 +2,21 @@ package com.jm.exp10and11;
 
 public class MaximalSubductionSum {
     private int[] data;
-    private int[] b;
+    private int[] workArray;
     private int maximalSum;
     private int[] bestIndex = new int[2];
 
     public MaximalSubductionSum(int[] data) {
         this.data = data;
-        b = new int[data.length];
-        b[0] = 0;
+        workArray = new int[data.length];
+        workArray[0] = 0;
     }
 
     public void go() {
         int i = 0, j, bestI = 0, bestJ = 0;
         for (j = 1; j < data.length; j++) {
-            if (b[j - 1] <= 0) {
-                b[j] = data[j];
+            if (workArray[j - 1] <= 0) {
+                workArray[j] = data[j];
                 i++;
                 if (data[j] > 0) {
                     maximalSum = data[j];
@@ -24,9 +24,9 @@ public class MaximalSubductionSum {
                     bestJ = j;
                 }
             } else {
-                b[j] = b[j - 1] + data[j];
-                if (b[j] > maximalSum) {
-                    maximalSum = b[j];
+                workArray[j] = workArray[j - 1] + data[j];
+                if (workArray[j] > maximalSum) {
+                    maximalSum = workArray[j];
                     bestJ = j;
                 }
             }
