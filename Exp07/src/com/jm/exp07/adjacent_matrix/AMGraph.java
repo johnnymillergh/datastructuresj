@@ -264,4 +264,8 @@ public class AMGraph implements IGraph {
             indexOfWeightsOfArcs++;
         }
     }
+
+    public void getShortestPath(int i, int i1) {
+
+    }
 }
