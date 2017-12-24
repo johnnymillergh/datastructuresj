@@ -5,6 +5,9 @@ import com.jm.exp07.IGraph;
 import com.jm.exp07.KeyInput;
 import com.jm.exp07.SequentialStack;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ALGraph implements IGraph {
     private GraphCategory category;
     private int vertexAmount;
@@ -73,7 +76,6 @@ public class ALGraph implements IGraph {
     public void getSimplePath(int v1, int v2) {
         SequentialStack stack = new SequentialStack(15);
         depthFirstSearch(v1, v2, stack);
-        System.out.print("Simple path: " + vertexes[v2].getData());
         while (true) {
             if (!stack.isEmpty()) {
                 try {
@@ -88,41 +90,33 @@ public class ALGraph implements IGraph {
     }
 
     private void depthFirstSearch(int v1, int v2, SequentialStack stack) {
-        if (!vertexes[v1].getData().equals(vertexes[v2].getData())) {
-//            System.out.print(vertexes[v1].getData() + "\n");
-            try {
-                stack.push(vertexes[v1].getData());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            visited[v1] = true;
-            ArcNode arcNode = vertexes[v1].getFirstArc();
-            while (arcNode != null) {
-                int adjVertexIndex = arcNode.getAdjVertex();
-                if (!visited[adjVertexIndex]) {
-                    if (!vertexes[adjVertexIndex].getData().equals(vertexes[v2].getData())) {
-                        depthFirstSearch(adjVertexIndex, v2, stack);
-                    } else {
-                        break;
-                    }
-                }else {
-                    while (true) {
-                        if (!stack.peek().equals(vertexes[adjVertexIndex].getData())) {
-                            try {
-                                stack.pop();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            break;
-                        }
-                    }
-                }
-                arcNode = arcNode.getNextArc();
-            }
-        } else {
-            return;
+        try {
+            stack.push(vertexes[v1].getData());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        ArcNode nextAdjacentNode = vertexes[v1].getFirstArc();
+        while (!stack.isEmpty()) {
+            String stackTop = (String) stack.peek();
+            if (stackTop.compareTo((String) vertexes[v2].getData()) == 0) {
+                // if start vertex and end vertex is the same one
+                break;
+            } else {
+                try {
+                    stack.push(vertexes[nextAdjacentNode.getAdjVertex()].getData());
+                    nextAdjacentNode = vertexes[nextAdjacentNode.getAdjVertex()].getFirstArc();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void displayPath(SequentialStack stack) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.delete(sb.length() - 2, sb.length());
+        System.out.println(sb.toString());
     }
 
     @Override

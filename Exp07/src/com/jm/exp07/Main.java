@@ -10,6 +10,6 @@ public class Main {
         ALGraph alGraph1 = new ALGraph();
         alGraph1.createGraph();
         alGraph1.display();
-        alGraph1.getSimplePath(0, 2);
+        alGraph1.getSimplePath(0, 4);
     }
 }
